@@ -15,6 +15,14 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         sectionTable.delegate = self
         sectionTable.dataSource = self
+        
+        sectionTable.clipsToBounds = true
+        sectionTable.layer.cornerRadius = 30
+        sectionTable.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,4 +37,18 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        
+        headerView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
 }
